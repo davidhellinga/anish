@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.StackPane?>
+
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="FXMLController">
+    <TabPane prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE">
+        <Tab text="Shelter">
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                <AnchorPane fx:id="AnimalEditContainer" layoutX="400.0" layoutY="35.0" prefHeight="318.0" prefWidth="575.0">
+               <children>
+                  <Button fx:id="addCatButton" layoutX="75.0" layoutY="260.0" mnemonicParsing="false" prefWidth="90.0" text="Add Cat" />
+                  <Button fx:id="addDogButton" layoutX="395.0" layoutY="260.0" mnemonicParsing="false" prefWidth="90.0" text="Add Dog" />
+                  <TextField fx:id="catNameField" layoutX="20.0" layoutY="30.0" prefHeight="31.0" prefWidth="200.0" />
+                  <TextField fx:id="catHabitField" layoutX="20.0" layoutY="90.0" prefHeight="31.0" prefWidth="200.0" />
+                  <TextField fx:id="dogNameField" layoutX="340.0" layoutY="30.0" prefHeight="31.0" prefWidth="200.0" />
+                  <TextField fx:id="catPriceField" layoutX="20.0" layoutY="210.0" prefHeight="31.0" prefWidth="200.0" />
+                  <TextField fx:id="dogPriceField" layoutX="340.0" layoutY="210.0" prefHeight="31.0" prefWidth="200.0" />
+                  <Label layoutX="20.0" layoutY="10.0" text="Name" />
+                  <Label layoutX="20.0" layoutY="70.0" text="Bad Habits" />
+                  <Label layoutX="20.0" layoutY="190.0" text="Price Override (optional)" />
+                  <Label layoutX="340.0" layoutY="10.0" text="Name" />
+                  <Label layoutX="340.0" layoutY="190.0" text="Price Override" />
+                  <Label layoutX="340.0" layoutY="70.0" text="Gender" />
+                  <Label layoutX="20.0" layoutY="130.0" text="Gender" />
+                  <ComboBox fx:id="catGenderBox" layoutX="20.0" layoutY="150.0" prefHeight="31.0" prefWidth="200.0" />
+                  <ComboBox fx:id="dogGenderBox" layoutX="340.0" layoutY="90.0" prefWidth="200.0" />
+               </children></AnchorPane>
+                <Label layoutX="14.0" layoutY="14.0" text="Animals" />
+                <Button fx:id="removeAnimalButton" layoutX="420.0" layoutY="370.0" mnemonicParsing="false" prefWidth="150" text="Remove Selected" />
+                <Button fx:id="reserveAnimalButton" layoutX="420.0" layoutY="410.0" mnemonicParsing="false" prefWidth="150" text="Reserve Selected" />
+                <Label layoutX="600.0" layoutY="415" text="Reservor Name:" />
+                <TextField fx:id="reservorNameField" layoutX="710.0" layoutY="410.0" prefWidth="200.0" />
+                <Button fx:id="saveShelterButton" layoutX="420.0" layoutY="470.0" mnemonicParsing="false" prefWidth="150" text="Save Changes" />
+                <TableView fx:id="animalTable" layoutX="14.0" layoutY="35.0" prefHeight="505.0" prefWidth="357.0">
+                    <columns>
+                        <TableColumn fx:id="nameColumn" prefWidth="110.0" text="Name" />
+                        <TableColumn fx:id="genderColumn" prefWidth="65.0" text="Gender" />
+                        <TableColumn fx:id="propertyColumn" prefWidth="130.0" text="Property" />
+                        <TableColumn fx:id="priceColumn" prefWidth="50.0" text="Price" />
+                    </columns>
+                </TableView>
+
+
+            </AnchorPane>
+        </Tab>
+        <Tab text="Webshop">
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+        </Tab>
+    </TabPane>
+</StackPane>
