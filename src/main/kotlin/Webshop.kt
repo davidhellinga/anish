@@ -116,8 +116,6 @@ class Webshop : IWebshop {
     }
 
     override fun loadWebshop() {
-//        addProduct(Cat("Evil Timmy", Gender.Male, "Eats babies"))
-//        addProduct(Dog("Bobby", Gender.Male))
         val gson = Gson()
         val fr = javax.swing.JFileChooser()
         val fw = fr.fileSystemView
@@ -136,7 +134,6 @@ class Webshop : IWebshop {
             File("$documentsPath/animalShelter.txt").createNewFile()
         }
         productList = productListTemp
-        println(productList.toString())
     }
 
 
