@@ -1,16 +1,16 @@
 package main.kotlin
 
-import com.google.gson.Gson
 import main.kotlin.animal.*
 import main.kotlin.webshop.ISellable
 import main.kotlin.webshop.Product
+import main.kotlin.webshop.WDMText
 import util.ProductModel
 import util.WebshopObservor
-import java.io.File
-import java.io.FileNotFoundException
 import kotlin.properties.Delegates
 
 class Webshop : IWebshop {
+    private val dataManager=WDMText()
+
     private var productList: List<ISellable> by Delegates.observable(mutableListOf()) { _, oldValue, newValue ->
         onproductListChanged?.invoke(oldValue, newValue)
 
@@ -99,41 +99,11 @@ class Webshop : IWebshop {
     override fun unreserveAnimal(animal: ProductModel): Boolean = findAnimalFromModel(animal).unreserve()
 
     override fun saveWebshop() {
-        val gson = Gson()
-        val output: MutableList<String> = mutableListOf()
-        val fr = javax.swing.JFileChooser()
-        val fw = fr.fileSystemView
-        val documentsPath = fw.defaultDirectory.toString()
-        File("$documentsPath/animalShelter.txt").delete()
-        File("$documentsPath/animalShelter.txt").createNewFile()
-        for (prod in productList) {
-            val str = gson.toJson(prod)
-            output.add(prod::class.java.toString().split(" ")[1] + "&separator" + str)
-        }
-        File("$documentsPath/animalShelter.txt").printWriter().use { out ->
-            output.forEach { out.println(it) }
-        }
+        dataManager.saveWebshop(this.productList)
     }
 
     override fun loadWebshop() {
-        val gson = Gson()
-        val fr = javax.swing.JFileChooser()
-        val fw = fr.fileSystemView
-        val documentsPath = fw.defaultDirectory.toString()
-        val productListTemp: MutableList<ISellable> = mutableListOf()
-        try {
-            File("$documentsPath/animalShelter.txt").forEachLine {
-                productListTemp.add(
-                    gson.fromJson(
-                        it.split("&separator")[1],
-                        Class.forName(it.split("&separator")[0])
-                    ) as ISellable
-                )
-            }
-        } catch (e: FileNotFoundException) {
-            File("$documentsPath/animalShelter.txt").createNewFile()
-        }
-        productList = productListTemp
+        this.productList=dataManager.loadWebshop()
     }
 
 

@@ -61,15 +61,19 @@ public class FXMLController implements Initializable, WebshopObservor {
 
     private void reservationInit() {
         reserveAnimalButton.setOnAction(event -> reserveAnimal());
-        animalTable.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
-            if (newSelection != null) {
-                try {
-                    reservorNameField.setText(animalTable.getSelectionModel().getSelectedItem().getReservor().getName());
-                } catch (NullPointerException ignored) {
-                    reservorNameField.clear();
-                }
+        animalTable.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> selectionFocusChanged(newSelection));
+    }
+
+    private void selectionFocusChanged(ProductModel newSelection) {
+        if (newSelection != null) {
+            try {
+                reservorNameField.setText(animalTable.getSelectionModel().getSelectedItem().getReservor().getName());
+                reservorNameField.setDisable(true);
+            } catch (NullPointerException ignored) {
+                reservorNameField.clear();
+                reservorNameField.setDisable(false);
             }
-        });
+        }
     }
 
     private void reserveAnimal() {
@@ -155,83 +159,5 @@ public class FXMLController implements Initializable, WebshopObservor {
         products = FXCollections.observableArrayList(newValue);
         animalListUpdate();
     }
-
-//    private void newAnimalTypeSelected() {
-//        double anchorX = AnimalEditContainer.getLayoutX();
-//        double anchorY = AnimalEditContainer.getLayoutY();
-//        double baseShiftX = 10.0;
-//        double basePrefWidth = 150;
-//        double baseIncrementY = 30.0;
-//
-//        AnimalEditContainer.getChildren().clear();
-//        createBaseAnimalUIElements(baseShiftX, basePrefWidth, baseIncrementY);
-//
-//        switch (NewAnimalCombo.getSelectionModel().getSelectedItem()) {
-//            case "Cat":
-//                createBadHabitField(baseShiftX, basePrefWidth, baseIncrementY);
-//                NewAnimalButton.setOnAction(event -> createNewCat());
-//                break;
-//            case "Dog":
-//                Label lastWalkLabel = new Label();
-//                lastWalkLabel.setText("The dogs last walk is set automatically");
-//
-//        }
-//
-//    }
-//    private void createBadHabitField(double baseShiftX, double basePrefWidth, double baseIncrementY) {
-//        Label habitLabel = new Label();
-//        habitLabel.setText("Bad habits:");
-//        habitLabel.setLayoutX(baseShiftX);
-//        habitLabel.setLayoutY(baseIncrementY * 3);
-//        habitLabel.setPrefWidth(basePrefWidth);
-//        AnimalEditContainer.getChildren().add(habitLabel);
-//        TextField habitField = new TextField();
-//        habitField.setLayoutX(baseShiftX + basePrefWidth);
-//        habitField.setLayoutY(baseIncrementY * 3);
-//        habitField.setPrefWidth(basePrefWidth * 2);
-//        AnimalEditContainer.getChildren().add(habitField);
-//        habitField.textProperty().addListener((observable, oldValue, newValue) -> {
-//            animalProperties.remove(oldValue);
-//            animalProperties.add(newValue);
-//        });
-//    }
-//
-//    private void createBaseAnimalUIElements(double baseShiftX, double basePrefWidth, double baseIncrementY) {
-//        Label nameLabel = new Label();
-//        nameLabel.setText("Name:");
-//        nameLabel.setLayoutX(baseShiftX);
-//        nameLabel.setLayoutY(baseIncrementY);
-//        nameLabel.setPrefWidth(basePrefWidth);
-//        AnimalEditContainer.getChildren().add(nameLabel);
-//        TextField nameField = new TextField();
-//        nameField.setLayoutX(baseShiftX + basePrefWidth);
-//        nameField.setLayoutY(baseIncrementY);
-//        nameField.setPrefWidth(basePrefWidth);
-//        AnimalEditContainer.getChildren().add(nameField);
-//        nameField.textProperty().addListener((observable, oldValue, newValue) -> {
-//            animalProperties.remove(oldValue);
-//            animalProperties.add(newValue);
-//        });
-//
-//        Label genderLabel = new Label();
-//        genderLabel.setText("Gender:");
-//        genderLabel.setLayoutX(baseShiftX);
-//        genderLabel.setLayoutY(baseIncrementY * 2);
-//        genderLabel.setPrefWidth(basePrefWidth);
-//        AnimalEditContainer.getChildren().add(genderLabel);
-//        ComboBox<Gender> genderCombo = new ComboBox<>();
-//        genderCombo.setLayoutX(baseShiftX + basePrefWidth);
-//        genderCombo.setLayoutY(baseIncrementY * 2);
-//        genderCombo.setPrefWidth(basePrefWidth);
-//        ObservableList<Gender> options = FXCollections.observableArrayList();
-//        Collections.addAll(options, Gender.values());
-//        genderCombo.setItems(options);
-//        AnimalEditContainer.getChildren().add(genderCombo);
-//        genderCombo.getSelectionModel().selectFirst();
-//        genderCombo.valueProperty().addListener((observable, oldValue, newValue) -> {
-//            animalProperties.remove(oldValue);
-//            animalProperties.add(newValue);
-//        });
-//    }
 
 }
