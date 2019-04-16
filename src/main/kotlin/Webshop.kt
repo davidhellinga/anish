@@ -20,7 +20,7 @@ class Webshop : IWebshop {
 
     override fun observe(o: WebshopObservor) {
         onproductListChanged = { _, _ ->
-            o.Update(getProducts())
+            o.update(getProducts())
         }
     }
 

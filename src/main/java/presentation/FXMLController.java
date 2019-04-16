@@ -157,7 +157,7 @@ public class FXMLController implements Initializable, WebshopObservor {
 
     }
 
-    public void Update(List<ProductModel> newValue) {
+    public void update(List<ProductModel> newValue) {
         products = FXCollections.observableArrayList(newValue);
         animalListUpdate();
     }
