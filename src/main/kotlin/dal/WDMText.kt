@@ -1,10 +1,11 @@
-package main.kotlin.webshop
+package dal
 
 import com.google.gson.Gson
+import main.kotlin.webshop.ISellable
 import java.io.File
 import java.io.FileNotFoundException
 
-class WDMText : IWebshopDataManager{
+class WDMText : IWebshopDataManager {
     private val docPath="${javax.swing.JFileChooser().fileSystemView.defaultDirectory}/animalShelter.txt"
     private val specialDelimiter="&separator"
 

@@ -1,7 +1,7 @@
 package main.kotlin
 
 import main.kotlin.webshop.ISellable
-import util.ProductModel
+import models.ProductModel
 import util.WebshopObservor
 
 interface IWebshop {

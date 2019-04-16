@@ -1,6 +1,6 @@
 package util;
 
-import main.kotlin.webshop.ISellable;
+import models.ProductModel;
 
 import java.util.List;
 

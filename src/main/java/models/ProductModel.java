@@ -1,4 +1,4 @@
-package util;
+package models;
 
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleStringProperty;

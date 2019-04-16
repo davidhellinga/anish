@@ -3,13 +3,13 @@ package main.kotlin
 import main.kotlin.animal.*
 import main.kotlin.webshop.ISellable
 import main.kotlin.webshop.Product
-import main.kotlin.webshop.WDMText
-import util.ProductModel
+import dal.WDMText
+import models.ProductModel
 import util.WebshopObservor
 import kotlin.properties.Delegates
 
 class Webshop : IWebshop {
-    private val dataManager=WDMText()
+    private val dataManager= WDMText()
 
     private var productList: List<ISellable> by Delegates.observable(mutableListOf()) { _, oldValue, newValue ->
         onproductListChanged?.invoke(oldValue, newValue)

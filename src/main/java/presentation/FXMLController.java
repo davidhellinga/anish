@@ -1,3 +1,5 @@
+package presentation;
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.Initializable;
@@ -7,7 +9,7 @@ import main.kotlin.IWebshop;
 import main.kotlin.Webshop;
 import main.kotlin.animal.AnimalFactory;
 import main.kotlin.animal.Gender;
-import util.ProductModel;
+import models.ProductModel;
 import util.WebshopObservor;
 
 import java.net.URL;

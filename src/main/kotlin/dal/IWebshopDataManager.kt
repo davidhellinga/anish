@@ -1,4 +1,6 @@
-package main.kotlin.webshop
+package dal
+
+import main.kotlin.webshop.ISellable
 
 interface IWebshopDataManager {
 
